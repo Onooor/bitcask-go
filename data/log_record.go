@@ -2,5 +2,5 @@ package data
 
 type LogRecordPos struct {
 	Fid    uint32 //文件id
-	Offset uint32
+	Offset int64
 }
