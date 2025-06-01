@@ -13,3 +13,15 @@ type DataFile struct {
 func OpenDataFile(dirPath string, filedId uint32) (*DataFile, error) {
 	return nil, nil
 }
+
+func (df *DataFile) ReadLogRecord(offset int64) (*LogRecord, error) {
+	return nil, nil
+}
+
+func (df *DataFile) Write(buf []byte) error {
+	return nil
+}
+
+func (df *DataFile) Sync() error {
+	return nil
+}
