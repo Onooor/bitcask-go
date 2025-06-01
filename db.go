@@ -14,7 +14,7 @@ type DB struct {
 	index        index.Indexer
 }
 
-// put 写入 key/value 数据 key不能为空
+// Put put 写入 key/value 数据 key不能为空
 func (db *DB) Put(key []byte, value []byte) error {
 	if len(key) == 0 {
 		return ErrKeyIsEmpty
@@ -77,11 +77,11 @@ func (db *DB) Get(key []byte) ([]byte, error) {
 }
 
 // 追加写入数据到活跃文件中
-func (db *DB) appendLogRecord(logRecord *data.LogRecord) (*data.LogRecord, error) {
+func (db *DB) appendLogRecord(logRecord *data.LogRecord) (*data.LogRecordPos, error) {
 	db.mu.RLock()
 	defer db.mu.RUnlock()
 	if db.activateFile == nil {
-		if err := db.setActivateDataFile(); err != nil {
+		if err := db.setActiveDataFile(); err != nil {
 			return nil, err
 		}
 	}
@@ -95,7 +95,7 @@ func (db *DB) appendLogRecord(logRecord *data.LogRecord) (*data.LogRecord, error
 
 		db.olderFiles[db.activateFile.FileId] = db.activateFile
 
-		if err := db.setActivateDataFile(); err != nil {
+		if err := db.setActiveDataFile(); err != nil {
 			return nil, err
 		}
 
@@ -117,7 +117,7 @@ func (db *DB) appendLogRecord(logRecord *data.LogRecord) (*data.LogRecord, error
 
 }
 
-func (db *DB) setActivateDataFile() error {
+func (db *DB) setActiveDataFile() error {
 	var initialFileId uint32 = 0
 	if db.activateFile != nil {
 		initialFileId = db.activateFile.FileId + 1
@@ -127,5 +127,5 @@ func (db *DB) setActivateDataFile() error {
 		return err
 	}
 	db.activateFile = dataFile
-
+	return nil
 }
