@@ -17,3 +17,7 @@ type LogRecordPos struct {
 	Fid    uint32 //文件id
 	Offset int64
 }
+
+func EncodeLogRecord(record *LogRecord) ([]byte, int64) {
+	return nil, 0
+}
