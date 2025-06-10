@@ -3,6 +3,8 @@ package bitcask_go
 import (
 	"bitcask-go/data"
 	"bitcask-go/index"
+	"errors"
+	"os"
 	"sync"
 )
 
@@ -12,6 +14,27 @@ type DB struct {
 	activateFile *data.DataFile
 	olderFiles   map[uint32]*data.DataFile
 	index        index.Indexer
+}
+
+func Open(options Options) (*DB, error) {
+	if err := checkOptions(options); err != nil {
+		return nil, err
+	}
+
+	if _, err := os.Stat(options.DirPath); os.IsNotExist(err) {
+		if err := os.Mkdir(options.DirPath, os.ModePerm); err != nil {
+			return nil, err
+		}
+	}
+
+	//初始化 DB实例结构体
+	db := &DB{
+		options:    options,
+		mu:         new(sync.RWMutex),
+		olderFiles: make(map[uint32]*data.DataFile),
+		index:      index.NewIndexer(options.IndexType),
+	}
+
 }
 
 // Put put 写入 key/value 数据 key不能为空
@@ -127,5 +150,16 @@ func (db *DB) setActiveDataFile() error {
 		return err
 	}
 	db.activateFile = dataFile
+	return nil
+}
+
+func checkOptions(options Options) error {
+	if options.DirPath == "" {
+		return errors.New("database path is empty")
+	}
+
+	if options.DataFileSize <= 0 {
+		return errors.New("database Data File Size must be grater than zero")
+	}
 	return nil
 }

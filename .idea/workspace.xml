@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22871020-347e-43ab-9b9f-7e2461541ac8" name="Changes" comment="chore：update Datafile code">
+    <list default="true" id="22871020-347e-43ab-9b9f-7e2461541ac8" name="Changes" comment="chore：update db code">
+      <change afterPath="$PROJECT_DIR$/bitcask/000.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index/index.go" beforeDir="false" afterPath="$PROJECT_DIR$/index/index.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/options.go" beforeDir="false" afterPath="$PROJECT_DIR$/options.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +28,9 @@
     <option name="PUSH_AUTO_UPDATE" value="true" />
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -33,28 +40,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultGoTemplateProperty": "Go File",
-    "Go Test.TestFileIO_Close in bitcask-go/fio.executor": "Run",
-    "Go Test.TestFileIO_Read in bitcask-go/fio.executor": "Run",
-    "Go Test.TestFileIO_Sync in bitcask-go/fio.executor": "Run",
-    "Go Test.TestFileIO_Write in bitcask-go/fio.executor": "Run",
-    "Go Test.TestNewFileIOManager in bitcask-go/fio.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.go.migrated.go.modules.settings": "true",
-    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
-    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
-    "git-widget-placeholder": "main",
-    "go.import.settings.migrated": "true",
-    "last_opened_file_path": "/Users/onee",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
+    &quot;Go Test.TestBTree_Put in bitcask-go/index.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestFileIO_Close in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestFileIO_Read in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestFileIO_Sync in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestFileIO_Write in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
+    &quot;Go Test.TestNewFileIOManager in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/onee&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="Go Test.TestFileIO_Write in bitcask-go/fio">
+}</component>
+  <component name="RunManager" selected="Go Test.TestBTree_Put in bitcask-go/index">
+    <configuration name="TestBTree_Put in bitcask-go/index" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="bitcask-go" />
+      <working_directory value="$PROJECT_DIR$/index" />
+      <root_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="bitcask-go/index" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <framework value="gotest" />
+      <pattern value="^\QTestBTree_Put\E$" />
+      <method v="2" />
+    </configuration>
     <configuration name="TestFileIO_Close in bitcask-go/fio" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="bitcask-go" />
       <working_directory value="$PROJECT_DIR$/fio" />
@@ -103,25 +123,13 @@
       <pattern value="^\QTestFileIO_Write\E$" />
       <method v="2" />
     </configuration>
-    <configuration name="TestNewFileIOManager in bitcask-go/fio" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="bitcask-go" />
-      <working_directory value="$PROJECT_DIR$/fio" />
-      <root_directory value="$PROJECT_DIR$" />
-      <kind value="PACKAGE" />
-      <package value="bitcask-go/fio" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <framework value="gotest" />
-      <pattern value="^\QTestNewFileIOManager\E$" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Test.TestBTree_Put in bitcask-go/index" />
         <item itemvalue="Go Test.TestFileIO_Write in bitcask-go/fio" />
         <item itemvalue="Go Test.TestFileIO_Read in bitcask-go/fio" />
         <item itemvalue="Go Test.TestFileIO_Sync in bitcask-go/fio" />
         <item itemvalue="Go Test.TestFileIO_Close in bitcask-go/fio" />
-        <item itemvalue="Go Test.TestNewFileIOManager in bitcask-go/fio" />
       </list>
     </recent_temporary>
   </component>
@@ -156,7 +164,10 @@
     <MESSAGE value="chore：update code" />
     <MESSAGE value="chore：update file_io test code" />
     <MESSAGE value="chore：update Datafile code" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore：update Datafile code" />
+    <MESSAGE value="chore：update readme" />
+    <MESSAGE value="chore：update go code" />
+    <MESSAGE value="chore：update db code" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore：update db code" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

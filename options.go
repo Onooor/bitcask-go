@@ -6,4 +6,13 @@ type Options struct {
 	DataFileSize int64
 
 	SyncWrites bool
+
+	IndexType IndexerType
 }
+
+type IndexerType = int8
+
+const (
+	BTreeIndex IndexerType = iota
+	ART
+)
