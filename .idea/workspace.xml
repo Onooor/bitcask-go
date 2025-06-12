@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="ALL" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22871020-347e-43ab-9b9f-7e2461541ac8" name="Changes" comment="chore：update Datafile code" />
+    <list default="true" id="22871020-347e-43ab-9b9f-7e2461541ac8" name="Changes" comment="chore：update workspace">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/data_file.go" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_file.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.go" beforeDir="false" afterPath="$PROJECT_DIR$/db.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -20,20 +24,25 @@
   <component name="GOROOT" url="file://C:/Program Files (x86)/Go" />
   <component name="Git.Settings">
     <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Onooor"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Onooor&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Onooor/bitcask-go.git",
-    "accountId": "a9376f40-1456-40ea-b6cf-901fb545f1fc"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Onooor/bitcask-go.git&quot;,
+    &quot;accountId&quot;: &quot;a9376f40-1456-40ea-b6cf-901fb545f1fc&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -42,27 +51,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultGoTemplateProperty&quot;: &quot;Go File&quot;,
-    &quot;Go Test.TestFileIO_Close in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
-    &quot;Go Test.TestFileIO_Read in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
-    &quot;Go Test.TestFileIO_Sync in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
-    &quot;Go Test.TestFileIO_Write in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
-    &quot;Go Test.TestNewFileIOManager in bitcask-go/fio.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.migrated.go.modules.settings&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.automatic.dependencies.download&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.go.modules.go.list.on.any.changes.was.set&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/onee&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultGoTemplateProperty": "Go File",
+    "Go Test.TestFileIO_Close in bitcask-go/fio.executor": "Run",
+    "Go Test.TestFileIO_Read in bitcask-go/fio.executor": "Run",
+    "Go Test.TestFileIO_Sync in bitcask-go/fio.executor": "Run",
+    "Go Test.TestFileIO_Write in bitcask-go/fio.executor": "Run",
+    "Go Test.TestNewFileIOManager in bitcask-go/fio.executor": "Run",
+    "RunOnceActivity.GoLinterPluginOnboarding": "true",
+    "RunOnceActivity.GoLinterPluginStorageMigration": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "RunOnceActivity.go.modules.automatic.dependencies.download": "true",
+    "RunOnceActivity.go.modules.go.list.on.any.changes.was.set": "true",
+    "git-widget-placeholder": "win",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "C:/Users/ONEE",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Go 测试.TestFileIO_Close in bitcask-go/fio">
     <configuration name="TestFileIO_Close in bitcask-go/fio" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="bitcask-go" />
@@ -162,7 +174,8 @@
     <MESSAGE value="chore：update code" />
     <MESSAGE value="chore：update file_io test code" />
     <MESSAGE value="chore：update Datafile code" />
-    <option name="LAST_COMMIT_MESSAGE" value="chore：update Datafile code" />
+    <MESSAGE value="chore：update workspace" />
+    <option name="LAST_COMMIT_MESSAGE" value="chore：update workspace" />
   </component>
   <component name="VgoProject">
     <settings-migrated>true</settings-migrated>

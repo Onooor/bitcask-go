@@ -4,6 +4,7 @@ import (
 	"bitcask-go/data"
 	"bitcask-go/index"
 	"errors"
+	"io"
 	"os"
 	"sort"
 	"strconv"
@@ -14,9 +15,10 @@ import (
 type DB struct {
 	options      Options
 	mu           *sync.RWMutex
-	activateFile *data.DataFile
-	olderFiles   map[uint32]*data.DataFile
-	index        index.Indexer
+	fileIds      []int                     //文件id，只能在加载索引的时候使用，不能在其他地方更新和使用
+	activateFile *data.DataFile            //当前活跃数据文件
+	olderFiles   map[uint32]*data.DataFile //旧的数据文件，只能用于读
+	index        index.Indexer             //内存索引
 }
 
 func Open(options Options) (*DB, error) {
@@ -45,6 +47,8 @@ func Open(options Options) (*DB, error) {
 	if err := db.loadIndexFromDataFiles(); err != nil {
 		return nil, err
 	}
+
+	return db, nil
 }
 
 // Put put 写入 key/value 数据 key不能为空
@@ -97,7 +101,7 @@ func (db *DB) Get(key []byte) ([]byte, error) {
 	}
 
 	//根据偏移读取对应的数据
-	logRecord, err := dataFile.ReadLogRecord(logRecordPos.Offset)
+	logRecord, _, err := dataFile.ReadLogRecord(logRecordPos.Offset)
 	if err != nil {
 		return nil, err
 	}
@@ -169,7 +173,6 @@ func (db *DB) loadDataFiles() error {
 		return err
 	}
 	var fileIds []int
-
 	for _, entry := range dirEntries {
 		if strings.HasSuffix(entry.Name(), data.DataFileNameSuffix) {
 			splitNames := strings.Split(entry.Name(), ".")
@@ -180,14 +183,17 @@ func (db *DB) loadDataFiles() error {
 			fileIds = append(fileIds, fileId)
 		}
 	}
+	//对文件id进行排序，从小到大依次加载
 	sort.Ints(fileIds)
+
+	db.fileIds = fileIds
 
 	for i, fid := range fileIds {
 		dataFile, err := data.OpenDataFile(db.options.DirPath, uint32(fid))
 		if err != nil {
 			return err
 		}
-		if i == len(fileIds)-1 {
+		if i == len(fileIds)-1 { //最后一个，说明是最大的，是当前活跃文件
 			db.activateFile = dataFile
 		} else {
 			db.olderFiles[uint32(fid)] = dataFile
@@ -196,8 +202,52 @@ func (db *DB) loadDataFiles() error {
 	return nil
 }
 
+// 从磁盘加载数据文件
 func (db *DB) loadIndexFromDataFiles() error {
+	//没有文件，说明数据库是空的，直接返回
+	if len(db.fileIds) == 0 {
+		return nil
+	}
 
+	//遍历所以文件id
+	for i, fid := range db.fileIds {
+		var fileId = uint32(fid)
+		var dataFile *data.DataFile
+		if db.activateFile.FileId == fileId {
+			dataFile = db.activateFile
+		} else {
+			dataFile = db.olderFiles[fileId]
+		}
+
+		var offset int64 = 0
+		for {
+			logRecord, size, err := dataFile.ReadLogRecord(offset)
+			if err != nil {
+				if err == io.EOF {
+					break
+				}
+				return err
+			}
+
+			//构建内存索引并且保存
+			logRecordPos := &data.LogRecordPos{Fid: fileId, Offset: offset}
+
+			if logRecord.Type != data.LogRecordDeleted {
+				db.index.Delete(logRecord.Key)
+			} else {
+				db.index.Put(logRecord.Key, logRecordPos)
+			}
+			//递增offset， 下一次从新的位置开始读取
+			offset += size
+
+		}
+
+		//如果是当前活跃文件，更新这个文件的writeoff
+		if i == len(db.fileIds)-1 {
+			db.activateFile.WriteOff = offset
+		}
+	}
+	return nil
 }
 
 func checkOptions(options Options) error {
